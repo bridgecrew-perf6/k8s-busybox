@@ -16,6 +16,7 @@ node {
     }
 
     stage('Docker hub login') {
+      sh 'echo $DOCKERHUB_CREDENTIALS'
       sh "docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW"
     }
 
