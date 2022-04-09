@@ -20,7 +20,6 @@ pipeline {
 
       stage('Docker hub login') {
         steps{
-          sh('echo $DOCKERHUB_CREDENTIALS')
           sh("docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW")
         }
       }
@@ -33,6 +32,7 @@ pipeline {
 
       stage('Push docker image') {
         steps{
+          sh("docker tag ${repoUrlPrefix}/${imageName} ${repoUrlPrefix}/${imageName}:${unique_Id}")
           sh("docker push ${repoUrlPrefix}/${imageName}:${unique_Id}")
           sh("docker push ${repoUrlPrefix}/${imageName}:latest")
           sh("docker image rm ${repoUrlPrefix}/${imageName}:latest")
