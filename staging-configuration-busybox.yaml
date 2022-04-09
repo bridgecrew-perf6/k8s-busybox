@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8s-busybox
+  namespace: memphis
+spec:
+  serviceAccount: memphis-memphis-busybox-account
+  containers:
+  - name: busybox
+    image: memphisos/k8s-busybox:4.2
+    imagePullPolicy: Always
+    env:
+    - name: NAMESPACE
+      value: memphis
