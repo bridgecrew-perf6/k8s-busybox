@@ -42,7 +42,7 @@ pipeline {
       
       stage('Push image to kubernetes') {
         steps{
-          sh "kubectl --kubeconfig=\"/var/lib/jenkins/.kube/memphis-staging-kubeconfig.yaml\" set image deployment/${containerName} ${containerName}=${repoUrlPrefix}/${imageName}:${unique_Id} -n ${namespace}"
+          sh "kubectl --kubeconfig=\"/var/lib/jenkins/.kube/memphis-staging-kubeconfig.yaml\" set image pod/${containerName} ${containerName}=${repoUrlPrefix}/${imageName}:${unique_Id} -n ${namespace}"
         }
       }
     }

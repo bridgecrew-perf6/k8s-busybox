@@ -51,7 +51,7 @@ metadata:
 spec:
   serviceAccount: {{ .Release.Name }}-memphis-busybox-account
   containers:
-  - name: busybox
+  - name: k8s-busybox
     image: memphisos/k8s-busybox:latest
     imagePullPolicy: Always
     env:
