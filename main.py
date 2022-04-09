@@ -12,6 +12,7 @@ try:
     print("- Searching for mongodb-replica-0")
     busybox_name = socket.gethostname()
     namespace = os.getenv('NAMESPACE')
+    print(namespace)
     # mongo_ns="memphis2"
     mongo_primary_pod_name = "mongodb-replica-0"
     mongo_secondary_pod_name = "mongodb-replica-1"
