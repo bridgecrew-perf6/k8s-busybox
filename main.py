@@ -11,6 +11,8 @@ try:
     config.load_incluster_config()
     # config.load_kube_config()
     v1 = client.CoreV1Api()
+
+    ## Mongo Section ##
     print("- Searching for mongodb-replica-0")
     busybox_name = socket.gethostname()
     namespace = os.getenv('NAMESPACE')
@@ -45,6 +47,7 @@ try:
         break
 except v1 as e:
     print("Error: %s\n" % e)
+
 try:
     print("- Done. Sleeping")
     time.sleep(4290000)
