@@ -25,8 +25,8 @@ try:
                 counter_arr[1] = 1
     print("- Both replicas are up")
     print("- Starting to configure mongodb")
-except:
-    print("Error 1")
+except v1 as e:
+    print("Error: %s\n" % e)
 try:
     exec_command = [
             '/bin/sh',
@@ -45,8 +45,8 @@ try:
                     name="memphis-broker-config", namespace='memphis-staging')
         print(resp.data)
         break
-except:
-    print("Error 2")
+except v1 as e:
+    print("Error: %s\n" % e)
 try:
     response = v1.delete_namespaced_pod(busybox_name, namespace)
     print(response)
