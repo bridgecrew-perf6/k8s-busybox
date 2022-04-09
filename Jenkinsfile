@@ -5,11 +5,12 @@ def gitBranch = "staging"
 def repoUrlPrefix = "memphisos"
 unique_Id = UUID.randomUUID().toString()
 def namespace = "memphis"
+def DOCKERHUB_CREDENTIALS=credentials('docker-hub')
 
 node {
   try{
     environment {
-		  DOCKERHUB_CREDENTIALS=credentials('docker-hub')
+		  
 	  }
 
     stage('SCM checkout') {
