@@ -46,8 +46,8 @@ try:
 except v1 as e:
     print("Error: %s\n" % e)
 try:
-    print("- Done")
-    while True:
+    print("- Done. Sleeping")
+    for x in range(600):
         time.sleep(2592000)
-except v1 as e:
-    print("Exception when calling CoreV1Api->delete_namespaced_pod: %s\n" % e)
+except:
+    print("Error")
