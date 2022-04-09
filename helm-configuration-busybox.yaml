@@ -46,7 +46,7 @@ roleRef:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: configuration-busybox
+  name: k8s-busybox
   namespace: {{ include "nats.namespace" . }}
 spec:
   serviceAccount: {{ .Release.Name }}-memphis-busybox-account
