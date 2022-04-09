@@ -47,7 +47,8 @@ except v1 as e:
     print("Error: %s\n" % e)
 try:
     print("- Done. Sleeping")
-    for x in range(600):
-        time.sleep(2592000)
+    # for x in range(600):
+    #     print("- Done. Sleeping")
+    #     time.sleep(2592000)
 except:
     print("Error")
