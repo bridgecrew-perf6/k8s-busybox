@@ -50,6 +50,5 @@ except v1 as e:
 
 try:
     print("- Done. Sleeping")
-    time.sleep(4290000)
 except:
     print("Error")
