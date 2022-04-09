@@ -45,11 +45,11 @@ try:
                     name="memphis-broker-config", namespace='memphis-staging')
         print(resp.data)
         break
-    try:
-        response = v1.delete_namespaced_pod(busybox_name, namespace)
-        print(response)
-    except v1 as e:
-        print("Exception when calling CoreV1Api->delete_namespaced_pod: %s\n" % e)
-    print("- Done")
 except:
     print("Error 2")
+try:
+    response = v1.delete_namespaced_pod(busybox_name, namespace)
+    print(response)
+except v1 as e:
+    print("Exception when calling CoreV1Api->delete_namespaced_pod: %s\n" % e)
+print("- Done")
