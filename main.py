@@ -3,6 +3,8 @@ from kubernetes import client, config
 from kubernetes.stream import stream
 import socket
 import os
+import time
+
 try:
     print("- Loading k8s config")
     # Configs can be set in Configuration class directly or using helper utility
@@ -44,8 +46,8 @@ try:
 except v1 as e:
     print("Error: %s\n" % e)
 try:
-    response = v1.delete_namespaced_pod(busybox_name, namespace)
-    print(response)
+    print("- Done")
+    while True:
+        time.sleep(2592000)
 except v1 as e:
     print("Exception when calling CoreV1Api->delete_namespaced_pod: %s\n" % e)
-print("- Done")
