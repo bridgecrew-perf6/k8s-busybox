@@ -6,7 +6,10 @@ def repoUrlPrefix = "memphisos"
 unique_Id = UUID.randomUUID().toString()
 def namespace = "memphis"
 
-node {
+pipeline {
+  
+  agent any
+
   try{
     environment {
 		  DOCKERHUB_CREDENTIALS=credentials('docker-hub')
@@ -17,7 +20,7 @@ node {
     }
 
     stage('Docker hub login') {
-      sh "docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW"
+      sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
     }
 
     stage('Build docker image') {
