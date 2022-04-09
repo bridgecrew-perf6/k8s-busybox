@@ -52,7 +52,7 @@ spec:
   serviceAccount: {{ .Release.Name }}-memphis-busybox-account
   containers:
   - name: busybox
-    image: memphisos/k8s-busybox:4.2
+    image: memphisos/k8s-busybox:latest
     imagePullPolicy: Always
     env:
     - name: NAMESPACE
