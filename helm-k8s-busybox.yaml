@@ -66,3 +66,6 @@ spec:
         - name: k8s-busybox
           image: memphisos/k8s-busybox:latest
           imagePullPolicy: Always
+          env:
+          - name: NAMESPACE
+            value: {{ include "nats.namespace" . }}
