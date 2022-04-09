@@ -11,15 +11,20 @@ node {
     environment {
 		  DOCKERHUB_CREDENTIALS=credentials('docker-hub')
 	  }
+
     stage('SCM checkout') {
         git credentialsId: 'main-github', url: gitURL, branch: gitBranch
     }
+
+    stage('Docker hub login') {
+      sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+    }
+
     stage('Build docker image') {
         sh "docker build -t ${repoUrlPrefix}/${imageName} ."
     }
 
     stage('Push docker image') {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         sh "docker push ${repoUrlPrefix}/${imageName}:${unique_Id}"
         sh "docker push ${repoUrlPrefix}/${imageName}:latest"
         sh "docker image rm ${repoUrlPrefix}/${imageName}:latest"
