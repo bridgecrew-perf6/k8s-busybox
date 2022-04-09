@@ -9,10 +9,6 @@ def DOCKERHUB_CREDENTIALS=credentials('docker-hub')
 
 node {
   try{
-    environment {
-		  
-	  }
-
     stage('SCM checkout') {
         git credentialsId: 'main-github', url: gitURL, branch: gitBranch
     }
