@@ -40,10 +40,6 @@ try:
                         stderr=True, stdin=True,
                         stdout=True, tty=False)
         print("- Response: " + resp)
-
-        resp = v1.read_namespaced_config_map(
-                    name="memphis-broker-config", namespace='memphis-staging')
-        print(resp.data)
         break
 except v1 as e:
     print("Error: %s\n" % e)
