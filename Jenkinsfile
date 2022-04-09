@@ -13,12 +13,13 @@ node {
         git credentialsId: 'main-github', url: gitURL, branch: gitBranch
     }
 
-    stage('Docker hub login') {
-      sh "docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}"
-    }
+    // stage('Docker hub login') {
+    //   sh "docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}"
+    // }
 
     stage('Build docker image') {
-        sh "docker build -t ${repoUrlPrefix}/${imageName} ."
+        // sh "docker build -t ${repoUrlPrefix}/${imageName} ."
+        app = docker.build("${repoUrlPrefix}/${imageName}")
     }
 
     stage('Push docker image') {
