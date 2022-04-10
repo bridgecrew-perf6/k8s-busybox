@@ -3,7 +3,6 @@ from kubernetes import client, config
 from kubernetes.stream import stream
 import socket
 import os
-import time
 
 try:
     print("- Loading k8s config")
