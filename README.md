@@ -54,11 +54,6 @@ Responsible for configuring the components of Memphis after helm deployment
 - [Contact](#contact)
 
 ## Memphis Components
-![](https://memphis-public-files.s3.eu-central-1.amazonaws.com/graphics+for+github/components+diagram+-+ui.png)
-![](https://memphis-public-files.s3.eu-central-1.amazonaws.com/graphics+for+github/components+diagram+-+broker.png )
-![](https://memphis-public-files.s3.eu-central-1.amazonaws.com/graphics+for+github/components+diagram+-+cli.png )
-![](https://memphis-public-files.s3.eu-central-1.amazonaws.com/graphics+for+github/components+diagram+-+cp.png )
-![](https://memphis-public-files.s3.eu-central-1.amazonaws.com/graphics+for+github/components+diagram+-+js.png )
 ![](https://memphis-public-files.s3.eu-central-1.amazonaws.com/graphics+for+github/components+diagram.png )
 
 ## Memphis repos
