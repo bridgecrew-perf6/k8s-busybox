@@ -33,6 +33,7 @@ In the coming versions, Memphis will solve the challenges above,<br>and recude 9
 Responsible for configuring the components of Memphis after helm deployment
 
 **Table of Contents**
+
 - [Memphis Components](#memphis-components)
 - [Memphis repos](#memphis-repos)
 - [Current SDKs](#current-sdks)
