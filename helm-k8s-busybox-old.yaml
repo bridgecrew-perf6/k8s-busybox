@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ .Release.Name }}-{{ include "nats.namespace" . }}-busybox-account
+  name: {{ .Release.Name }}-memphis-busybox-account
   namespace: {{ include "nats.namespace" . }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ .Release.Name }}-{{ include "nats.namespace" . }}-busybox-role
+  name: {{ .Release.Name }}-memphis-busybox-role
   namespace: {{ include "nats.namespace" . }}
 rules:
 - apiGroups: [""]
@@ -32,33 +32,40 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ .Release.Name }}-{{ include "nats.namespace" . }}-busybox-role-binding
+  name: {{ .Release.Name }}-memphis-busybox-role-binding
   namespace: {{ include "nats.namespace" . }}
 subjects:
 - kind: ServiceAccount
-  name: {{ .Release.Name }}-{{ include "nats.namespace" . }}-busybox-account
+  name: {{ .Release.Name }}-memphis-busybox-account
   namespace: {{ include "nats.namespace" . }}
 roleRef:
   kind: ClusterRole
-  name: {{ .Release.Name }}-{{ include "nats.namespace" . }}-busybox-role
+  name: {{ .Release.Name }}-memphis-busybox-role
   apiGroup: rbac.authorization.k8s.io
 ---
-apiVersion: batch/v1
-kind: Job
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: memphis-busybox
+  name: k8s-busybox
   namespace: {{ include "nats.namespace" . }}
+  labels:
+    app: k8s-busybox
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-busybox
   template:
+    metadata:
+      name: k8s-busybox
+      labels:
+        app: k8s-busybox
     spec:
-      serviceAccount: {{ .Release.Name }}-{{ include "nats.namespace" . }}-busybox-account
+      serviceAccount: {{ .Release.Name }}-memphis-busybox-account
       containers:
-      - name: memphis-busybox
-        image: memphisos/k8s-busybox:latest
-        imagePullPolicy: Always
-        env:
+        - name: k8s-busybox
+          image: memphisos/k8s-busybox:latest
+          imagePullPolicy: Always
+          env:
           - name: NAMESPACE
             value: {{ include "nats.namespace" . }}
-      restartPolicy: Never
-  backoffLimit: 7
-  activeDeadlineSeconds: 600
