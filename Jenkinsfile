@@ -1,7 +1,7 @@
 def imageName = "k8s-busybox"
 def containerName = "k8s-busybox"
 def gitURL = "git@github.com:Memphis-OS/k8s-busybox.git"
-def gitBranch = "staging"
+def gitBranch = "master"
 def repoUrlPrefix = "memphisos"
 unique_Id = UUID.randomUUID().toString()
 def namespace = "memphis"
