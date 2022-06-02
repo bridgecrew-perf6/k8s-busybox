@@ -25,12 +25,11 @@ try:
     v1 = client.CoreV1Api()
 
     ## Mongo Section ##
-    print("- Searching for mongodb-replica-0")
+    print("- Searching for mongodb-0")
     busybox_name = socket.gethostname()
     namespace = os.getenv('NAMESPACE')
-    # mongo_ns="memphis2"
-    mongo_primary_pod_name = "mongodb-replica-0"
-    mongo_secondary_pod_name = "mongodb-replica-1"
+    mongo_primary_pod_name = "mongodb-0"
+    mongo_secondary_pod_name = "mongodb-1"
     counter_arr = [0,0]
     while counter_arr[0] != 1 and counter_arr[1] != 1:
         ret2 = v1.list_namespaced_pod(namespace)
