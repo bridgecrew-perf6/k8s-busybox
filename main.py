@@ -25,11 +25,11 @@ try:
     v1 = client.CoreV1Api()
 
     ## Mongo Section ##
-    print("- Searching for mongodb-0")
+    print("- Searching for memphis-mongodb-0")
     busybox_name = socket.gethostname()
     namespace = os.getenv('NAMESPACE')
-    mongo_primary_pod_name = "mongodb-0"
-    mongo_secondary_pod_name = "mongodb-1"
+    mongo_primary_pod_name = "memphis-mongodb-0"
+    mongo_secondary_pod_name = "memphis-mongodb-1"
     counter_arr = [0,0]
     while counter_arr[0] != 1 and counter_arr[1] != 1:
         ret2 = v1.list_namespaced_pod(namespace)
@@ -39,7 +39,7 @@ try:
             if(i.metadata.name == mongo_secondary_pod_name and i.status.phase == "Running"):
                 counter_arr[1] = 1
     print("- Both replicas are up")
-    print("- Starting to configure mongodb")
+    print("- Starting to configure memphis-mongodb")
 except v1 as e:
     print("Error: %s\n" % e)
 try:
